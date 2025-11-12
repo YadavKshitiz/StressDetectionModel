@@ -1,0 +1,23 @@
+# Flask
+# tensorflow==2.16.1 # Specify a stable version compatible with Keras models
+# numpy
+# pandas
+# scikit-learn
+# joblib # For loading the survey_scaler.pkl
+# librosa # Essential for audio feature extraction
+# opencv-python # Used for robust image decoding and resizingFlask  
+# gunicorn  
+# protobuf==3.20.* 
+
+
+Flask==3.0.3
+tensorflow-cpu==2.15.0
+numpy==1.26.4
+pandas==2.2.3
+scikit-learn==1.5.2
+joblib==1.3.2
+librosa==0.10.1
+opencv-python-headless==4.9.0.80
+gunicorn==22.0.0
+protobuf==3.20.*
+
