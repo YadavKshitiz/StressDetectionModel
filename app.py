@@ -45,7 +45,6 @@ except Exception as e:
 
 
 # --- 2. PREPROCESSING FUNCTIONS ---
-
 def preprocess_image(base64_img_string):
     """Decodes Base64 image, converts to grayscale, resizes, and normalizes."""
     try:
@@ -121,6 +120,8 @@ def preprocess_survey(answers: list):
 @app.route('/predict_stress', methods=['POST'])
 def predict_stress():
     start_time = time.time()
+    print("📥 Received request at /predict_stress")  # Debug log
+
     if not request.json:
         return jsonify({"error": "No data received. Expected JSON payload."}), 400
 
@@ -139,6 +140,8 @@ def predict_stress():
         stress_result = "High Stress" if stress_prob >= 0.5 else "Low Stress"
         latency = round((time.time() - start_time) * 1000, 2)
 
+        print(f"✅ Prediction complete: {stress_result} ({stress_prob:.4f}) in {latency}ms")  # Debug log
+
         return jsonify({
             "status": "success",
             "stress_level": stress_result,
@@ -155,5 +158,7 @@ def predict_stress():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 8080))
+    # ✅ Use correct Render port (10000)
+    port = int(os.environ.get('PORT', 10000))
+    print(f"🚀 Starting Flask server on port {port} ...")
     app.run(host='0.0.0.0', port=port)
